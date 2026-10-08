@@ -1,4 +1,8 @@
 🍳 Gerenciador de Receitas
+
+
+
+
 ────୨ৎ────────୨ৎ────────୨ৎ────
 
 Este projeto é um mini sistema desenvolvido para facilitar o cadastro e o gerenciamento de receitas. Nele, é possível adicionar novas receitas com informações como nome, ingredientes e tempo de preparo.
