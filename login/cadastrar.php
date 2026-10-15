@@ -1,5 +1,12 @@
-<?php 
+<?php
 require_once __DIR__ . '/../includes/functions.php';
+
+$mensagem = '';
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    cadastrar_user($conexao, $_POST['email'], $_POST['senha']);
+    $mensagem = 'Usuário cadastrado com sucesso!';
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,6 +21,7 @@ require_once __DIR__ . '/../includes/functions.php';
 
     <h2>Cadastre-se</h2>
     <h2>══════════════</h2>
+
     <form action="" method="post">
         <label for="email">e-mail: </label>
         <input type="email" name="email" id="email" required><br><br>
@@ -22,14 +30,14 @@ require_once __DIR__ . '/../includes/functions.php';
         <input type="password" name="senha" id="senha" required><br><br>
 
         <input type="submit" value="cadastrar">
+
+        <?php if ($mensagem != ''): ?>
+            <p class="mensagem-sucesso">
+                <?= htmlspecialchars($mensagem) ?>
+            </p>
+        <?php endif; ?>
     </form>
 
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        cadastrar_user($conexao, $_POST['email'], $_POST['senha']);
-    }
-
-    include __DIR__ . '/../includes/footer.php';
-    ?>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
