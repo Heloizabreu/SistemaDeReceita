@@ -1,93 +1,36 @@
-# Sistema de Gerenciamento de Receitas
+Aqui está a documentação **completa e unificada** do projeto, integrando a visão geral, a estrutura de arquivos, os requisitos, o passo a passo de instalação/execução do banco, as tabelas de fluxo CRUD e de gerenciamento de usuários, as instruções de dump/restauração, a validação, a segurança e os objetivos acadêmicos.
+
+Tudo foi colocado dentro de **um único bloco de código** para facilitar a cópia com um único clique no botão de copiar:
+
+```markdown
+# Mini Sistema de Gerenciamento de Receitas
 
 ## 1. Visão Geral do Projeto
 
-### 1.1 Sobre o Projeto
+### 1.1 Objetivo
+O **Mini Sistema de Gerenciamento de Receitas** é uma aplicação web desenvolvida em PHP e PostgreSQL, com o objetivo de facilitar o cadastro, organização e administração de receitas culinárias. 
 
-O Sistema de Gerenciamento de Receitas é uma aplicação web desenvolvida em **PHP**, utilizando **PostgreSQL** como banco de dados e **PDO** para realizar a conexão entre a aplicação e o banco.
-
-O sistema foi desenvolvido com o objetivo de facilitar o cadastro e a organização de receitas culinárias. Nele, é possível adicionar receitas informando o nome, os ingredientes e o tempo de preparo, além de consultar, editar e excluir receitas cadastradas.
-
-A aplicação também possui funcionalidades de cadastro e login de usuários, permitindo organizar o acesso ao sistema.
+O sistema permite criar receitas (informando nome, ingredientes e tempo de preparo), consultar a lista completa ou itens específicos, atualizar informações e excluir registros do banco de dados. Além disso, conta com um módulo de autenticação e controle de acesso de usuários.
 
 ### 1.2 Tecnologias Utilizadas
 
 | Camada | Tecnologia |
-|---|---|
-| Back-end | PHP |
-| Banco de dados | PostgreSQL |
-| Acesso aos dados | PDO |
-| Driver do banco | PDO_PGSQL |
-| Front-end | HTML5 e CSS3 |
-| Controle de versão | Git e GitHub |
-| Editor de código | Visual Studio Code |
+| :--- | :--- |
+| **Back-end** | PHP |
+| **Banco de dados** | PostgreSQL |
+| **Acesso aos dados** | PDO (PHP Data Objects) |
+| **Driver do banco** | PDO_PGSQL |
+| **Front-end** | HTML5 e CSS3 |
+| **Servidor web** | PHP Development Server |
+| **Controle de versão** | Git e GitHub |
+| **Editor de código** | Visual Studio Code |
 
 ---
 
-## 2. Funcionalidades
-
-### 2.1 Usuários
-
-- Cadastro de usuários.
-- Login no sistema.
-- Logout.
-- Verificação de usuários.
-
-### 2.2 Receitas
-
-- Cadastro de novas receitas.
-- Listagem das receitas cadastradas.
-- Consulta das informações das receitas.
-- Edição das receitas existentes.
-- Exclusão de receitas.
-
-### 2.3 Informações das Receitas
-
-Cada receita pode conter as seguintes informações:
-
-- **Nome:** nome da receita cadastrada.
-- **Ingredientes:** ingredientes necessários para o preparo.
-- **Tempo de preparo:** tempo necessário para preparar a receita.
-
----
-
-## 3. Operações CRUD
-
-O sistema utiliza operações CRUD para realizar o gerenciamento das receitas cadastradas. CRUD é a sigla para Create, Read, Update e Delete, que representam as operações de criação, consulta, atualização e exclusão de dados.
-
-| Operação | Arquivo | Descrição |
-|---|---|---|
-| **Create (Criar)** | `create.php` | Responsável por cadastrar novas receitas. |
-| **Read (Consultar)** | `select.php` | Responsável por consultar e listar as receitas cadastradas. |
-| **Read (Consulta específica)** | `select_w.php` | Arquivo relacionado à consulta de receitas, conforme sua implementação. |
-| **Update (Atualizar)** | `update.php` | Responsável por editar as informações das receitas. |
-| **Delete (Excluir)** | `delete.php` | Responsável por excluir receitas cadastradas. |
-
-### 3.1 Fluxo das Operações CRUD
+## 2. Estrutura do Projeto
 
 ```text
-           CRUD
-            |
-    ┌───────┼────────┐
-    |       |        |
-  Create   Read    Update
-    |       |        |
- Cadastrar Consultar Editar
- receita   receitas receita
-                    |
-                  Delete
-                    |
-              Excluir receita
-```
-
-Essas operações permitem manter as informações das receitas organizadas e atualizadas no banco de dados.
-
----
-
-## 4. Estrutura do Projeto
-
-```text
-SistemaDeReceita/
+mini_sistema/ (SistemaDeReceita/)
 │
 ├── app/
 │   ├── create.php
@@ -98,7 +41,8 @@ SistemaDeReceita/
 │   └── update.php
 │
 ├── database/
-│   └── dump.sql
+│   ├── dump.sql
+│   └── receitas.sql
 │
 ├── includes/
 │   ├── footer.php
@@ -118,252 +62,258 @@ SistemaDeReceita/
 ├── image.png
 ├── index.php
 └── README.md
+
 ```
 
-### 4.1 Descrição dos Diretórios
+### 2.1 Descrição dos Diretórios e Arquivos
 
-**Pasta `app/`**
-
-Contém os arquivos responsáveis pelo gerenciamento das receitas, incluindo cadastro, consulta, atualização e exclusão.
-
-**Pasta `database/`**
-
-Armazena o arquivo `dump.sql`, que contém a cópia lógica do banco de dados utilizada no processo de restauração.
-
-**Pasta `includes/`**
-
-Contém arquivos reutilizáveis do sistema, como cabeçalho, rodapé e funções utilizadas pelas páginas.
-
-**Pasta `login/`**
-
-Reúne os arquivos relacionados ao cadastro, login, logout e verificação dos usuários.
-
-**Pasta `style/`**
-
-Contém o arquivo CSS responsável pela estilização das páginas.
-
-**Arquivos principais**
-
-- `index.php`: página inicial do sistema.
-- `documentacao.md`: documentação complementar do projeto.
-- `image.png`: imagem armazenada no projeto.
-- `README.md`: documentação principal do repositório.
+* **Pasta `app/`:** Contém os scripts PHP responsáveis por executar as operações CRUD de gerenciamento das receitas.
+* **Pasta `database/`:** Armazena os arquivos SQL (`dump.sql` / `receitas.sql`) utilizados para backup, transporte e restauração do banco de dados.
+* **Pasta `includes/`:** Reúne componentes reutilizáveis da aplicação, como cabeçalho, rodapé e funções utilitárias.
+* **Pasta `login/`:** Contém os módulos de cadastro, login, logout e verificação de permissão dos usuários.
+* **Pasta `style/`:** Armazena as folhas de estilo CSS responsáveis pelo design e leiaute do sistema.
+* **`index.php`:** Página inicial e ponto de entrada da aplicação.
 
 ---
 
-## 5. Banco de Dados
+## 3. Funcionalidades e Operações CRUD
 
-O sistema utiliza o PostgreSQL para armazenar as informações necessárias ao funcionamento da aplicação.
+O sistema utiliza a arquitetura CRUD para a manipulação dos dados no banco PostgreSQL:
+
+### 3.1 Mapeamento do CRUD de Receitas
+
+| Operação | Arquivo PHP | Descrição e Ação no Sistema |
+| --- | --- | --- |
+| **Create (Criar)** | `create.php` | Exibe o formulário e realiza o cadastro de uma nova receita (informando nome, ingredientes e tempo de preparo). |
+| **Read (Consultar Tudo)** | `select.php` | Busca no banco e exibe a listagem de todas as receitas cadastradas no sistema. |
+| **Read (Consulta Específica)** | `select_w.php` | Permite realizar consultas específicas filtrando receitas (por ID ou parâmetros definidos). |
+| **Update (Atualizar)** | `update.php` | Exibe os dados atuais da receita selecionada e salva as edições feitas pelo usuário. |
+| **Delete (Excluir)** | `delete.php` | Remove permanentemente a receita selecionada do banco de dados. |
+
+### 3.2 Mapeamento do Módulo de Usuários
+
+| Operação / Recurso | Arquivo PHP | Descrição e Ação no Sistema |
+| --- | --- | --- |
+| **Cadastro** | `cadastrar.php` | Permite o registro de novos usuários no sistema. |
+| **Login** | `login.php` | Valida as credenciais do usuário e inicia a sessão no sistema. |
+| **Verificação** | `verifica_user.php` | Controla e protege o acesso às páginas restritas verificando a sessão ativa. |
+| **Logout** | `logout.php` | Encerra a sessão do usuário de forma segura. |
+
+### 3.3 Diagrama do Fluxo do Sistema
+
+```text
+           Início
+             |
+             v
+      Página Principal
+             |
+     ┌───────┼────────────────────────┐
+     │       │                        │
+ Cadastro  Login           Gerenciador de Receitas
+ Usuários                             │
+                             ┌────────┼────────┬────────┐
+                             │        │        │        │
+                         Cadastrar Consultar Atualizar Excluir
+                          Receita  Receitas  Receita  Receita
+                         (create)  (select)  (update) (delete)
+             │
+             v
+           Logout
+
+```
+
+---
+
+## 4. Configuração do Banco de Dados
+
+### 4.1 Parâmetros de Conexão
 
 | Configuração | Valor |
-|---|---|
-| SGBD | PostgreSQL |
-| Nome do banco | `receitas` |
-| Método de conexão | PDO |
-| Driver | `pgsql` |
-| Arquivo de backup | `database/dump.sql` |
+| --- | --- |
+| **SGBD** | PostgreSQL |
+| **Nome do Banco** | `receitas` |
+| **Método de Conexão** | PDO (PHP Data Objects) |
+| **Driver** | `pgsql` |
+| **Arquivo de Backup** | `database/dump.sql` ou `database/receitas.sql` |
 
-As tabelas e os campos utilizados devem corresponder à estrutura real do banco de dados do projeto.
+### 4.2 Exemplo de Conexão PHP (PDO)
 
-### 5.1 Conexão com o Banco
+```php
+<?php
+$host = "192.168.10.25"; // Ou 'localhost' dependendo do ambiente
+$dbname = "receitas";
+$user = "receitas";
+$pass = getenv("DB_PASSWORD") ?: "receitas";
 
-A aplicação utiliza PDO para estabelecer a conexão com o PostgreSQL. As configurações devem incluir o endereço do servidor, o nome do banco, o usuário e a senha.
+try {
+    $conexao = new PDO(
+        "pgsql:host=$host;dbname=$dbname",
+        $user,
+        $pass,
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
 
-As credenciais devem ser configuradas no ambiente de execução e não devem ser publicadas no GitHub.
+    return $conexao;
+
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    die("Erro ao conectar ao banco de dados.");
+}
+?>
+
+```
 
 ---
 
-## 6. Processo de Dump do Banco de Dados
+## 5. Processo de Dump e Backup do Banco de Dados
 
-O dump é uma cópia lógica do banco de dados que pode conter a estrutura das tabelas e os dados armazenados. Ele permite transportar e restaurar o banco em outro ambiente.
+O dump é uma cópia lógica do banco que contém a estrutura das tabelas e os dados armazenados.
 
-### 6.1 Gerar o Dump
+### 5.1 Gerar o Dump
 
-Com o PostgreSQL acessível e o utilitário `pg_dump` instalado, execute na pasta principal do projeto:
+Para exportar o banco de dados via terminal, execute o comando na raiz do projeto:
 
 ```bash
 pg_dump -h 192.168.10.25 -U postgres -d receitas -F p -f database/dump.sql
-```
 
-O comando gera o arquivo `database/dump.sql`.
+```
 
 **Parâmetros utilizados:**
 
-- `-h`: endereço do servidor PostgreSQL.
-- `-U`: usuário utilizado para acessar o banco.
-- `-d`: nome do banco de dados.
-- `-F p`: define o formato SQL puro.
-- `-f`: indica o caminho do arquivo de saída.
+* `-h`: Endereço do servidor PostgreSQL.
+* `-U`: Usuário administrativo do PostgreSQL.
+* `-d`: Nome do banco de dados a ser exportado.
+* `-F p`: Formato de saída em SQL puro (plain text).
+* `-f`: Caminho e nome do arquivo de saída.
 
-O comando solicita a senha do usuário do banco, caso necessário.
+### 5.2 Conferir o Backup
 
-### 6.2 Conferir o Dump
-
-No Linux, execute:
+No Linux, verifique se o arquivo foi gerado e confira o seu tamanho:
 
 ```bash
 ls -lh database/dump.sql
+
 ```
 
-Para verificar as tabelas descritas no arquivo:
+Para verificar as tabelas presentes no dump:
 
 ```bash
 grep -n "CREATE TABLE" database/dump.sql
+
 ```
-
-O arquivo deverá existir e conter o dump gerado corretamente.
-
-### 6.3 Armazenamento do Dump
-
-Após gerar o arquivo, mantenha-o dentro da pasta `database/` e adicione-o ao repositório para que possa ser utilizado na restauração em outro ambiente.
-
-**Atenção:** não publique dumps que contenham senhas, dados pessoais ou outras informações sensíveis.
 
 ---
 
-## 7. Como Executar o Projeto
+## 6. Como Executar o Projeto
 
-### 7.1 Requisitos
+### 6.1 Pré-requisitos
 
-- PHP instalado.
-- PostgreSQL instalado ou acessível pela rede.
-- Extensão `pdo_pgsql` habilitada no PHP.
-- Git instalado.
-- Utilitários `psql` e `pg_dump`.
-- Visual Studio Code.
-- Navegador web.
+* PHP (versão 7.4 ou superior) instalado.
+* PostgreSQL instalado e em execução.
+* Extensão `pdo_pgsql` habilitada no `php.ini`.
+* Git instalado.
+* Visual Studio Code.
+* Navegador web.
 
-### 7.2 Clonar o Repositório
-
-Execute os comandos:
+### 6.2 Clonar o Repositório
 
 ```bash
-git clone https://github.com/Heloizabreu/SistemaDeReceita.git
+git clone [https://github.com/Heloizabreu/SistemaDeReceita.git](https://github.com/Heloizabreu/SistemaDeReceita.git)
 cd SistemaDeReceita
+
 ```
 
-### 7.3 Criar o Usuário e o Banco de Dados
+### 6.3 Criar Usuário e Banco de Dados no PostgreSQL
 
-No Linux, entre no terminal administrativo do PostgreSQL:
+Acesse o terminal do PostgreSQL como administrador:
 
 ```bash
 sudo -u postgres psql
+
 ```
 
-Execute os comandos separadamente:
+Execute os comandos SQL para criar o usuário e o banco:
 
 ```sql
-CREATE USER receitas WITH PASSWORD 'SUA_SENHA';
-CREATE DATABASE receitas OWNER receitas;
-```
-
-Substitua `SUA_SENHA` por uma senha definida por você.
-
-Para sair do PostgreSQL:
-
-```sql
+CREATE USER receitas WITH PASSWORD 'receitas';
+CREATE DATABASE receitas OWNER TO receitas;
 \q
+
 ```
 
-Se o usuário ou o banco já existir, verifique a configuração antes de tentar criá-los novamente.
+### 6.4 Restaurar o Dump do Banco
 
-### 7.4 Restaurar o Dump
-
-Com o banco `receitas` criado e vazio, execute na pasta principal do projeto:
+Com o banco de dados `receitas` criado e vazio, execute a restauração:
 
 ```bash
-psql -h 192.168.10.25 -U receitas -d receitas -f database/dump.sql
+psql -U receitas -d receitas -h localhost -f database/dump.sql
+
 ```
 
-Digite a senha do usuário `receitas` quando solicitado.
+*(Caso esteja utilizando um servidor remoto, substitua `localhost` pelo IP correspondente, como `192.168.10.25`).*
 
-A restauração recria a estrutura e os dados presentes no dump, desde que o arquivo contenha essas informações e que o usuário possua as permissões necessárias.
+### 6.5 Iniciar o Servidor PHP
 
-Se estiver restaurando em um PostgreSQL instalado no próprio computador, utilize `localhost` no lugar de `192.168.10.25`.
-
-**Importante:** o banco de destino deve existir antes da restauração. Evite executar o dump em um banco que já possua as mesmas tabelas, pois isso pode causar conflitos.
-
-### 7.5 Configurar a Conexão
-
-Após criar ou restaurar o banco, configure o arquivo de conexão utilizado pela aplicação com os dados corretos do ambiente.
-
-O endereço do servidor, o nome do banco, o usuário e a senha precisam corresponder à configuração do PostgreSQL.
-
-### 7.6 Iniciar o Servidor PHP
-
-Na pasta principal do projeto, execute:
+Na pasta raiz do projeto, inicie o servidor embutido do PHP:
 
 ```bash
 php -S localhost:8080
+
 ```
 
-Depois, abra o navegador e acesse:
-
-```text
-http://localhost:8080
-```
+Acesse a aplicação no navegador em: `http://localhost:8080`
 
 ---
 
-## 8. Validação Pós-Restauração
+## 7. Validação Pós-Restauração
 
-Após restaurar o banco, é importante verificar se a conexão e as tabelas estão funcionando.
+Para garantir que o banco e a aplicação estejam funcionando corretamente:
 
-### 8.1 Testar a Conexão
-
+1. **Testar a Conexão via Terminal:**
 ```bash
-psql -h 192.168.10.25 -U receitas -d receitas -c "SELECT 1;"
+psql -U receitas -d receitas -h localhost -c "SELECT 1;"
+
 ```
 
-### 8.2 Listar as Tabelas
 
+2. **Listar as Tabelas Criadas:**
 ```bash
-psql -h 192.168.10.25 -U receitas -d receitas -c "\dt"
+psql -U receitas -d receitas -h localhost -c "\dt"
+
 ```
 
-### 8.3 Conferir a Aplicação
 
-- Verificar se a página inicial abre.
-- Testar o cadastro de receitas.
-- Consultar as receitas cadastradas.
-- Testar a edição e a exclusão.
-- Verificar o cadastro e o login de usuários.
-- Confirmar se a aplicação consegue acessar o banco.
+3. **Conferir a Aplicação:**
+* Acesse a página inicial e faça o login/cadastro de usuário.
+* Realize o cadastro de uma nova receita (`create.php`).
+* Verifique a listagem de receitas (`select.php`).
+* Teste a edição (`update.php`) e exclusão (`delete.php`).
 
----
 
-## 9. Segurança
-
-Para manter o sistema mais seguro, é importante:
-
-- Utilizar consultas preparadas para reduzir o risco de SQL Injection.
-- Proteger as páginas que exigem autenticação.
-- Encerrar corretamente as sessões no logout.
-- Não publicar senhas ou credenciais reais no GitHub.
-- Restringir as permissões de acesso ao banco de dados.
-- Manter backups atualizados.
-- Conferir os arquivos SQL antes de executar uma restauração.
 
 ---
 
-## 10. Objetivo Acadêmico
+## 8. Boas Práticas e Segurança
 
-O projeto foi desenvolvido para praticar conceitos de desenvolvimento web e gerenciamento de dados, utilizando PHP e PostgreSQL.
-
-Durante o desenvolvimento, são trabalhados conceitos de operações CRUD, formulários, autenticação de usuários, organização de arquivos, conexão com banco de dados e procedimentos de backup e restauração por meio de dumps SQL.
+* **Acesso ao Banco:** Utilização do PDO com *Prepared Statements* para evitar ataques de SQL Injection.
+* **Controle de Acesso:** Proteção das páginas internas do CRUD por meio do arquivo `verifica_user.php`.
+* **Gestão de Sessões:** Encerramento completo das variáveis de sessão no `logout.php`.
+* **Credenciais:** Proteção de senhas e dados sensíveis através de variáveis de ambiente (`getenv`), impedindo a publicação de senhas reais no GitHub.
+* **Backups:** Manutenção periódica de dumps SQL atualizados.
 
 ---
 
-## 11. Desenvolvido para Fins Acadêmicos
+## 9. Objetivo Acadêmico
 
-Projeto desenvolvido com o objetivo de aplicar conhecimentos em:
+Este projeto foi desenvolvido com fins acadêmicos para consolidar conceitos fundamentais de desenvolvimento web e banco de dados, incluindo:
 
-- Desenvolvimento Web.
-- PHP.
-- PostgreSQL.
-- PDO.
-- HTML5 e CSS3.
-- Operações CRUD.
-- Autenticação de usuários.
-- Git e GitHub.
-- Backup e restauração de banco de dados.
+* Desenvolvimento de aplicações web em PHP.
+* Integração e manipulação do banco de dados PostgreSQL via PDO.
+* Construção e organização de arquiteturas CRUD.
+* Autenticação, controle de acesso e gestão de sessões de usuários.
+* Rotinas de versionamento de código com Git/GitHub.
+* Procedimentos práticos de backup e restauração de dados via Dump SQL.
+
+```
+
+```
