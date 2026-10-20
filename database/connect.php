@@ -1,8 +1,8 @@
 <?php 
 $host = "192.168.10.25";
 $dbname = "receitas";
-$user = "postgres";
-$pass = "ana64ana";
+$user = "receitas";
+$pass = "receitas";
 try {
     $conexao = new PDO(
         "pgsql:host=$host;dbname=$dbname",
