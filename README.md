@@ -161,15 +161,7 @@ A página inicial possui um menu com as principais opções do sistema:
 
 Dessa forma, o usuário consegue acessar facilmente as diferentes partes do sistema.
 
-## 9. Objetivo do projeto
-
-O objetivo deste projeto foi criar um sistema simples de gerenciamento de receitas e colocar em prática os conhecimentos aprendidos durante as aulas, principalmente na criação de páginas, formulários, cadastro e gerenciamento de informações.
-
-## 10. Conclusão
-
-O Gerenciador de Receitas facilita a organização das receitas e permite realizar as principais operações necessárias para administrar os dados, como cadastrar, consultar, atualizar e excluir informações.
-
-## 11. Como Executar:
+## 9. Como Executar:
 1. Clone o repositório:
 ```bash
 git clone https://github.com/Heloizabreu/SistemaDeReceita.git
@@ -184,4 +176,14 @@ sudo -u postgres psql -c "CREATE USER receitas WITH PASSWORD 'receitas'; CREATE 
 ```sql
 psql -U receitas -d receitas -f database/dump.sql
 ```
+
+
+## 10. Objetivo do projeto
+
+O objetivo deste projeto foi criar um sistema simples de gerenciamento de receitas e colocar em prática os conhecimentos aprendidos durante as aulas, principalmente na criação de páginas, formulários, cadastro e gerenciamento de informações.
+
+## 11. Conclusão
+
+O Gerenciador de Receitas facilita a organização das receitas e permite realizar as principais operações necessárias para administrar os dados, como cadastrar, consultar, atualizar e excluir informações.
+
 
