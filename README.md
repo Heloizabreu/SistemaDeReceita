@@ -1,6 +1,4 @@
-Aqui está a documentação **completa e unificada** do projeto, integrando a visão geral, a estrutura de arquivos, os requisitos, o passo a passo de instalação/execução do banco, as tabelas de fluxo CRUD e de gerenciamento de usuários, as instruções de dump/restauração, a validação, a segurança e os objetivos acadêmicos.
 
-Tudo foi colocado dentro de **um único bloco de código** para facilitar a cópia com um único clique no botão de copiar:
 
 ```markdown
 # Mini Sistema de Gerenciamento de Receitas
