@@ -8,7 +8,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/mini_sistema/style/style.css">
+    <link rel="stylesheet" href="/SistemaDeReceita/style/style.css">
     <title>Cadastrar Receita</title>
 </head>
 <body>
