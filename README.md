@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # Mini Sistema de Gerenciamento de Receitas
 
 ## 1. Visão Geral do Projeto
@@ -314,4 +314,4 @@ Este projeto foi desenvolvido com fins acadêmicos para consolidar conceitos fun
 
 ```
 
-```
+
