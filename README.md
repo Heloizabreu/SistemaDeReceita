@@ -234,7 +234,7 @@ Execute os comandos SQL para criar o usuário e o banco:
 
 ```sql
 CREATE USER receitas WITH PASSWORD 'receitas';
-CREATE DATABASE receitas OWNER TO receitas;
+CREATE DATABASE receitas OWNER receitas;
 \q
 
 ```
