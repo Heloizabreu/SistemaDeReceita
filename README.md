@@ -168,3 +168,20 @@ O objetivo deste projeto foi criar um sistema simples de gerenciamento de receit
 ## 10. Conclusão
 
 O Gerenciador de Receitas facilita a organização das receitas e permite realizar as principais operações necessárias para administrar os dados, como cadastrar, consultar, atualizar e excluir informações.
+
+## 11. Como Executar:
+1. Clone o repositório:
+```bash
+git clone https://github.com/Heloizabreu/SistemaDeReceita.git
+cd SistemaDeReceita
+```
+
+2. Cria o usuario e banco de dados receitas:
+```sql
+sudo -u postgres psql -c "CREATE USER receitas WITH PASSWORD 'receitas'; CREATE DATABASE receitas OWNER TO receitas;"
+
+3. Restaurar o dump:
+```sql
+psql -U receitas -d receitas -f database/dump.sql
+```
+
